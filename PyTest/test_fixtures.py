@@ -12,7 +12,7 @@ def test_method1(numbers):
     x = 15
     assert numbers[0] == x
 
-@pytest.mark.
+@pytest.mark
 def test_method2(numbers):
     y = 20
     assert numbers[1] == y
