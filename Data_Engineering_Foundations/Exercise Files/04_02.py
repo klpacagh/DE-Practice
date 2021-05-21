@@ -21,6 +21,7 @@ movies_df = spark.read \
 
 ##print the movies_df
 print(movies_df.show())
+print("Test")
 
 
 
