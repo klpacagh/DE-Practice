@@ -11,3 +11,5 @@ salesDF_csv = glueContext.create_dynamic_frame.from_catalog(
     database = "gluespark-db",
     table_name = "sales_csv_csv"
 )
+
+salesDF_csv.SelectFields.apply()
