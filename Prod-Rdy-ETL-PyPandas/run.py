@@ -18,8 +18,8 @@ def main():
     parser.add_argument('config', help='A configuration file in YAML format.')
     args = parser.parse_args()
 
-#    config = 'C:/Daten/xetra_project_old/xetra_1234/configs/xetra_report1_config.yaml'
-#    config = yaml.safe_load(open(config))
+    # config_file = '/code/configs/xetra_report1_config.yml'
+    # config = yaml.safe_load(open(config))
 
     config = yaml.safe_load(open(args.config))
     # configure logging

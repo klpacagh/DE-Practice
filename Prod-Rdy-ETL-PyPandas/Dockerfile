@@ -14,9 +14,11 @@ WORKDIR /code
 
 # Transferring the code and essential data
 COPY xetra ./xetra
+COPY configs ./configs
 COPY Pipfile ./Pipfile
 COPY Pipfile.lock ./Pipfile.lock
 COPY run.py ./run.py
 
 RUN pip install pipenv
 RUN pipenv install --ignore-pipfile --system
+CMD [ "python", "./run.py"]
