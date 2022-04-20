@@ -191,7 +191,7 @@ def fruits_into_baskets(fruits):
     
 
 
-print("fruits into a basket problem: ", fruits_into_baskets(['A', 'B', 'C', 'A', 'C']))
+# print("fruits into a basket problem: ", fruits_into_baskets(['A', 'B', 'C', 'A', 'C']))
 
 
 # Longest Substring with Only Distinct Characters
@@ -227,6 +227,47 @@ def non_repeat_substring(str):
 
     # print(maxLengthOfWindow)
     return maxLengthOfWindow
-print("Length of the longest substring: " + str(non_repeat_substring("aabccbb")))
-print("Length of the longest substring: " + str(non_repeat_substring("abbbb")))
-print("Length of the longest substring: " + str(non_repeat_substring("abccde")))
+# print("Length of the longest substring: " + str(non_repeat_substring("aabccbb")))
+# print("Length of the longest substring: " + str(non_repeat_substring("abbbb")))
+# print("Length of the longest substring: " + str(non_repeat_substring("abccde")))
+
+
+# Longest Substring with Same Letters, after Replacement
+'''
+Given a string with lowercase letters only, if you are allowed to replace no more than k letters with any letter,
+find the length of the longest substring having the same letters after replacement.
+
+Input: String="aabccbb", k=2
+Output: 5
+Explanation: Replace the two 'c' with 'b' to have the longest repeating substring "bbbbb".
+'''
+def length_of_longest_substring(str1, k):
+
+    window_start, max_length, max_repeat_letter_count = 0, 0, 0
+    frequency_map = {}
+
+    # Try to extend the range [window_start, window_end]
+    for window_end in range(len(str1)):
+        right_char = str1[window_end]
+        if right_char not in frequency_map:
+            frequency_map[right_char] = 0
+        frequency_map[right_char] += 1
+        max_repeat_letter_count = max(
+            max_repeat_letter_count, frequency_map[right_char])
+
+        # Current window size is from window_start to window_end, overall we have a letter which is
+        # repeating 'max_repeat_letter_count' times, this means we can have a window which has one letter
+        # repeating 'max_repeat_letter_count' times and the remaining letters we should replace.
+        # if the remaining letters are more than 'k', it is the time to shrink the window as we
+        # are not allowed to replace more than 'k' letters
+        if (window_end - window_start + 1 - max_repeat_letter_count) > k:
+            left_char = str1[window_start]
+            frequency_map[left_char] -= 1
+            window_start += 1
+
+        max_length = max(max_length, window_end - window_start + 1)
+    return max_length
+
+print(length_of_longest_substring("aabccbb", 2))
+print(length_of_longest_substring("abbcb", 1))
+print(length_of_longest_substring("abccde", 1))
