@@ -1,0 +1,62 @@
+{
+  
+    "objects": [
+      {
+        "subnetId": "subnet-0a8f46313da20ae5f",
+        "schedule": {
+          "ref": "DefaultSchedule"
+        },
+        "resourceRole": "S3ADMINACCESSROLE",
+        "role": "datapipeline_role",
+        "securityGroupIds": "sg-0d3589dfbd73a3241",
+        "name": "EC2 Resource",
+        "id": "ResourceId_HOj7b",
+        "type": "Ec2Resource",
+        "region": "us-east-1"
+      },
+      {
+        "failureAndRerunMode": "CASCADE",
+        "schedule": {
+          "ref": "DefaultSchedule"
+        },
+        "resourceRole": "DataPipelineDefaultResourceRole",
+        "role": "DataPipelineDefaultRole",
+        "pipelineLogUri": "s3://redshift-unload-bucket-paca/",
+        "scheduleType": "cron",
+        "name": "Default",
+        "id": "Default"
+      },
+      {
+        "connectionString": "jdbc:redshift://redshift-cluster-kev.can7rvqof0xd.us-east-1.redshift.amazonaws.com:5439/dev",
+        "databaseName": "dev",
+        "*password": "AWSuser1234",
+        "name": "Redshift Database Connection",
+        "id": "RedshiftDatabaseId_TLw5T",
+        "type": "RedshiftDatabase",
+        "username": "awsuser"
+      },
+      {
+        "period": "1 hours",
+        "name": "Every 1 hour",
+        "id": "DefaultSchedule",
+        "type": "Schedule",
+        "startAt": "FIRST_ACTIVATION_DATE_TIME"
+      },
+      {
+        "schedule": {
+          "ref": "DefaultSchedule"
+        },
+        "database": {
+          "ref": "RedshiftDatabaseId_TLw5T"
+        },
+        "scriptUri": "s3://redshift-unload-bucket-paca/redshift-unload.sql",
+        "name": "Sql Job / Activity ",
+        "runsOn": {
+          "ref": "ResourceId_HOj7b"
+        },
+        "id": "SqlActivityId_MuZ71",
+        "type": "SqlActivity"
+      }
+    ],
+    "parameters": []
+  }
