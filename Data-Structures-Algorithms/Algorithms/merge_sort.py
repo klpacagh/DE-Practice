@@ -21,7 +21,7 @@ def merge(list1, list2): # helper function
         combined.append(list1[i])
         i += 1
 
-    while j < len(list1):
+    while j < len(list2):
         combined.append(list2[j]) # if any remaining in list j
         j += 1
 
@@ -44,4 +44,4 @@ def merge_sort(my_list):
 
 
 
-print(merge_sort([3,1,4,2]))
+print(merge_sort([3,1,4,2,8,1,10,10]))

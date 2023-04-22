@@ -70,8 +70,8 @@ def maxSubstringLenWithKDistinctChars(the_array, n_distinct_chars):
             if (my_dict.get(the_array[window_start]) == 0):
                 del my_dict[the_array[window_start]]
             window_start += 1
-            # print(my_dict)
-            # print("----")
+        # print(my_dict)
+        # print("----")
             
     print('Max Length of Substring with', n_distinct_chars, ' distinct chars: ', maxLengthOfWindow)
 
@@ -114,7 +114,7 @@ def max_sub_array_of_size_k(k, arr):
 
     return largest
 
-max_sub_array_of_size_k(3, [2, 1, 5, 1, 3, 2])
+print("max_sub_array_of_size_k", max_sub_array_of_size_k(3, [2, 1, 5, 1, 3, 2]))
 
 # Smallest Subarray With a Greater Sum
 '''
@@ -145,7 +145,7 @@ def smallest_subarray_with_given_sum(s, arr):
 
     return smallest_subarray_len
 
-smallest_subarray_with_given_sum(7, [2, 1, 5, 2, 8])
+print("smallest_subarray_with_given_sum: ", smallest_subarray_with_given_sum(7, [2, 1, 5, 2, 8]))
 
 # Fruits into Baskets
 '''
@@ -191,7 +191,7 @@ def fruits_into_baskets(fruits):
     
 
 
-# print("fruits into a basket problem: ", fruits_into_baskets(['A', 'B', 'C', 'A', 'C']))
+print("fruits into a basket problem: ", fruits_into_baskets(['A', 'B', 'C', 'A', 'C']))
 
 
 # Longest Substring with Only Distinct Characters
